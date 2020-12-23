@@ -137,3 +137,4 @@ C:\PROJETOS_ALURA\Alu-WEBAPI2\ServerWEB\WEBAPI2\obj\Debug\LojaAPI.csproj.CoreCom
 C:\PROJETOS_ALURA\Alu-WEBAPI2\ServerWEB\WEBAPI2\obj\Debug\LojaAPI.csproj.CopyComplete
 C:\PROJETOS_ALURA\Alu-WEBAPI2\ServerWEB\WEBAPI2\obj\Debug\WEBAPI2.dll
 C:\PROJETOS_ALURA\Alu-WEBAPI2\ServerWEB\WEBAPI2\obj\Debug\WEBAPI2.pdb
+C:\PROJETOS_ALURA\Alu-WEBAPI2\ServerWEB\WEBAPI2\obj\Debug\LojaAPI.csprojAssemblyReference.cache

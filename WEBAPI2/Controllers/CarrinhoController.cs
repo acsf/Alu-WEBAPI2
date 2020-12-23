@@ -11,11 +11,12 @@ namespace WEBAPI2.Controllers
 {
     public class CarrinhoController : ApiController
     {
-        public string Get(int id)
+        //[HttpPost]
+        public Carrinho Get(int id)
         {
             CarrinhoDAO dao = new CarrinhoDAO();
             Carrinho carrinho = dao.Busca(id);
-            return carrinho.ToXML();
+            return carrinho;
         }
     }
 }
