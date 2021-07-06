@@ -18,5 +18,12 @@ namespace WEBAPI2.Controllers
             Carrinho carrinho = dao.Busca(id);
             return carrinho;
         }
+
+        public string Post([FromBody]Carrinho carrinho)
+        {
+            CarrinhoDAO dao = new CarrinhoDAO();
+            dao.Adiciona(carrinho);
+            return "sucesso";
+        }
     }
 }
