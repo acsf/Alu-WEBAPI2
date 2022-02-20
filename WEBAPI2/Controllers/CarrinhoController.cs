@@ -11,13 +11,13 @@ namespace WEBAPI2.Controllers
 {
     public class CarrinhoController : ApiController
     {
-        //[HttpPost]
+        //[HttpGET]
         public HttpResponseMessage Get(int id)
         {
             try
             {
-                CarrinhoDAO dao = new CarrinhoDAO();
-                Carrinho carrinho = dao.Busca(id);
+                var dao = new CarrinhoDAO();
+                var carrinho = dao.Busca(id);
                 return Request.CreateResponse(HttpStatusCode.OK, carrinho);
             }
             catch (KeyNotFoundException)
@@ -29,19 +29,31 @@ namespace WEBAPI2.Controllers
            
         }
 
+        //[HttpPOST]
         public HttpResponseMessage Post([FromBody]Carrinho carrinho)
         {
-            CarrinhoDAO dao = new CarrinhoDAO();
+            var dao = new CarrinhoDAO();
             dao.Adiciona(carrinho);
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            var response = Request.CreateResponse(HttpStatusCode.Created);
 
             //Uma boa prática passar a localização ao criar um objeto
             //Para que outros possam localizar
-            string location = Url.Link("DefaultApi", new { controller = "carrinho", id = carrinho.Id });
+            var location = Url.Link("DefaultApi", new { controller = "carrinho", id = carrinho.Id });
             response.Headers.Location = new Uri(location);
             
             return response;
+        }
+
+        //[HttpDELETE]
+        [Route("api/carrinho/{idCarrinho}/produto/{idProduto}")]
+        public HttpResponseMessage Delete([FromUri]int idCarrinho,[FromUri]int idProduto)
+        {
+            var dao = new CarrinhoDAO();
+            var carrinho = dao.Busca(idCarrinho);
+            carrinho.Remove(idProduto);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }
