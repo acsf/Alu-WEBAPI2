@@ -55,5 +55,20 @@ namespace WEBAPI2.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        //[HttpPUT]
+        //[Route("api/carrinho/{idCarrinho}/produto/{idProduto}")]
+        //Alterado para modificar apenas o campo quantidade, da forma anterior, é possivel alterar todo o produto
+        [Route("api/carrinho/{idCarrinho}/produto/{idProduto}/quantidade")]
+        public HttpResponseMessage Put([FromBody]Produto produto, [FromUri]int idCarrinho,[FromUri]int idProduto)
+        {
+            var dao = new CarrinhoDAO();
+            var carrinho = dao.Busca(idCarrinho);
+
+            //carrinho.Troca(produto);
+            carrinho.TrocaQuantidade(produto);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }
